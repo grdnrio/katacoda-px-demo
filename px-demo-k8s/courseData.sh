@@ -1,4 +1,4 @@
-export IP=$(hostname -I | awk '{print $1}')
+export IP=172.17.0.8
 
 docker run -d --net=host -p 4001:2379 \
  --volume=/var/lib/px-etcd:/etcd-data \
