@@ -26,6 +26,7 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "imageid": "portworx-kubernetes-running"
+    "trainingid": "portworx-kubernetes",
+    "imageid": "portworx-kubernetes"
   }
 }
