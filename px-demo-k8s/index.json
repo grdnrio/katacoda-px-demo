@@ -9,7 +9,6 @@
       }
     ],
     "intro": {
-      "courseData": "courseData.sh"
     },
     "finish": {
       "text": "finish.md"
@@ -26,7 +25,6 @@
     "uilayout": "terminal"
   },
   "backend": {
-    "trainingid": "portworx-kubernetes-running",
-    "imageid": "portworx-kubernetes"
+    "imageid": "portworx-kubernetes-running"
   }
 }
