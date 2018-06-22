@@ -5,14 +5,12 @@
     "steps": [
       {
         "title": "",
-        "text": "step1.md",
-        "courseData": "background.sh"
+        "text": "step1.md"
       }
     ],
     "intro": {
-      "text": "intro.md",
-      "code": "foreground.sh",
-      "credits": ""
+      "courseData": "background.sh",
+      "code": "foreground.sh"
     },
     "finish": {
       "text": "finish.md"
