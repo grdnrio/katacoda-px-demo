@@ -26,7 +26,8 @@
     }
   },
   "environment": {
-    "uilayout": "terminal"
+    "uilayout": "terminal",
+    "hideintro": true
   },
   "backend": {
     "imageid": "portworx-kubernetes-running"
