@@ -65,7 +65,7 @@ spec:
           value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
           value: password
-        command: ["curl -o wp-content/themes/twentyfifteen/header.php https://gitlab.com/snippets/1724998/raw"]
+        command: ["mkdir -p /var/www/html/wp-content/themes/twentyfifteen && curl -o /var/www/html/wp-content/themes/twentyfifteen/header.php https://gitlab.com/snippets/1724998/raw"]
         ports:
         - containerPort: 80
           name: wordpress
