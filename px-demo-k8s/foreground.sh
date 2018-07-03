@@ -4,8 +4,9 @@ sudo docker run --restart=always                            \
        -v /etc/pwxlh:/config -v /etc/pwxlh/certs:/certs     \
        portworx/px-lighthouse:1.4.0-rc1
 
-mkdir wordpress && mv wordpress* wordpress/.
-mkdir postgres && mv postgres* postgres/.
+mkdir wordpress && mkdir postgres
+mv wordpress*.yaml wordpress && mv wordpress*.sh wordpress
+my postgres*.yaml postgres
 
 launch.sh
 
