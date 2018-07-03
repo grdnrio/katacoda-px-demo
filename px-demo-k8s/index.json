@@ -17,12 +17,8 @@
     "finish": {
       "text": "finish.md"
     },
-
     "assets": {
-      "host01": [ {"file": "*", "target": "~/", "chmod": "+x" } ],            
-      "node01": [ {"file": "*", "target": "~/", "chmod": "+x" } ],
-      "node02": [ {"file": "*", "target": "~/", "chmod": "+x" } ],
-      "node03": [ {"file": "*", "target": "~/", "chmod": "+x" } ]
+      "host01": [ {"file": "wordpress-deploy.yaml", "target": "/root", "chmod": "+x" } ]
     }
   },
   "environment": {
