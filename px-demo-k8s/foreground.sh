@@ -6,7 +6,9 @@ sudo docker run --restart=always                            \
 
 mkdir wordpress && mkdir postgres
 mv wordpress*.yaml wordpress && mv wordpress*.sh wordpress
-my postgres*.yaml postgres
+mv postgres*.yaml postgres
+
+echo -e "\nalias ls='ls -l --color=auto' \nPS1='\h:\w\\$ '" >> .bashrc && source ~/.profile
 
 launch.sh
 
