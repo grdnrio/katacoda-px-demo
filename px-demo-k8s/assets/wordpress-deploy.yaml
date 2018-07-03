@@ -65,10 +65,16 @@ spec:
           value: wordpress-mysql
         - name: WORDPRESS_DB_PASSWORD
           value: password
-        command: ["mkdir -p /var/www/html/wp-content/themes/twentyfifteen && curl -o /var/www/html/wp-content/themes/twentyfifteen/header.php https://gitlab.com/snippets/1724998/raw"]
         ports:
         - containerPort: 80
           name: wordpress
+        volumeMounts:
+        - name: wordpress-persistent-storage
+          mountPath: /var/www/html
+      initContainers:
+      - name: install
+        image: busybox
+        command: ["mkdir -p /var/www/html/wp-content/themes/twentyfifteen && curl -o /var/www/html/wp-content/themes/twentyfifteen/header.php https://gitlab.com/snippets/1724998/raw"]
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/html
