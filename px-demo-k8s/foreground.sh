@@ -9,7 +9,7 @@ mv wordpress*.yaml wordpress && mv wordpress*.sh wordpress
 chmod a+x wordpress/*
 mv postgres*.yaml postgres
 
-#echo -e "\nalias ls='ls -l --color=auto' \nPS1='\h:\w\\$ '" >> .bashrc && source ~/.profile
+echo -e "\nalias ls='ls -l --color=auto' \nPS1='\h:\w\\$ '" >> .bashrc && source ~/.profile
 
 launch.sh
 
