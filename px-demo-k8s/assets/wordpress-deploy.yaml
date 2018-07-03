@@ -44,6 +44,7 @@ metadata:
   name: wordpress
   labels:
     app: wordpress
+    name: wordpress
 spec:
   replicas: 3
   strategy:
@@ -53,6 +54,7 @@ spec:
       labels:
         app: wordpress
         tier: frontend
+        name: wordpress
     spec:
       # Use the stork scheduler to enable more efficient placement of the pods
       schedulerName: stork
@@ -68,13 +70,6 @@ spec:
         ports:
         - containerPort: 80
           name: wordpress
-        volumeMounts:
-        - name: wordpress-persistent-storage
-          mountPath: /var/www/html
-      initContainers:
-      - name: install
-        image: busybox
-        command: ["mkdir -p /var/www/html/wp-content/themes/twentyfifteen && curl -o /var/www/html/wp-content/themes/twentyfifteen/header.php https://gitlab.com/snippets/1724998/raw"]
         volumeMounts:
         - name: wordpress-persistent-storage
           mountPath: /var/www/html
