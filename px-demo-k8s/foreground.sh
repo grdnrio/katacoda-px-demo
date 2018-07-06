@@ -5,7 +5,7 @@ sudo docker run --restart=always                            \
        portworx/px-lighthouse:1.4.0
 
 mkdir wordpress && mkdir postgres
-mv wordpress*.yaml wordpress && mv wordpress*.sh wordpress
+mv *wordpress*.yaml wordpress && mv wordpress*.sh wordpress
 chmod a+x wordpress/*
 mv postgres*.yaml postgres
 
