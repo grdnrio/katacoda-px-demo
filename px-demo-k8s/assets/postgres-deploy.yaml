@@ -18,8 +18,8 @@ metadata:
   name: postgres-data
   labels:
     name: postgres
-    annotations:
-      volume.beta.kubernetes.io/storage-class: px-postgres-sc
+  annotations:
+    volume.beta.kubernetes.io/storage-class: px-postgres-sc
 spec:
   accessModes:
     - ReadWriteOnce
