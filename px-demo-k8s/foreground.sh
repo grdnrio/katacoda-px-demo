@@ -11,5 +11,7 @@ mv postgres*.* postgres
 
 echo -e "\n alias k='kubectl' \nalias ls='ls -l --color=auto' \nPS1='\h:\w\\$ '" >> .bashrc && source ~/.profile
 
+clear
+
 launch.sh
 
