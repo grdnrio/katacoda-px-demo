@@ -10,3 +10,11 @@ pgbench -i -s 40 pxdemo;
 psql
 # drop database pxdemo;
 
+
+
+pxctl credentials create --provider s3 \
+--s3-access-key <> \
+--s3-secret-key <> \
+--s3-region us-east-1 \
+--s3-endpoint node01:9010 \
+--s3-disable-ssl
