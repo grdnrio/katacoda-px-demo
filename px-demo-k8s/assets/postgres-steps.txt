@@ -1,0 +1,12 @@
+# create database pxdemo;
+# \q
+
+pgbench -i -s 40 pxdemo;
+
+# psql demo
+# \dt
+# select count(*) from pgbench_accounts;
+
+psql
+# drop database pxdemo;
+
