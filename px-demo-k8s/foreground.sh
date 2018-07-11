@@ -5,9 +5,9 @@ sudo docker run --restart=always                            \
        portworx/px-lighthouse:1.4.0
 
 mkdir wordpress && mkdir postgres
-mv *wordpress*.yaml wordpress && mv wordpress*.sh wordpress
+mv *wordpress*.* wordpress
 chmod a+x wordpress/*
-mv postgres*.yaml postgres
+mv postgres*.* postgres
 
 echo -e "\n alias k='kubectl' \nalias ls='ls -l --color=auto' \nPS1='\h:\w\\$ '" >> .bashrc && source ~/.profile
 
