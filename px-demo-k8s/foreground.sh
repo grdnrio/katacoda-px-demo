@@ -4,17 +4,17 @@ sudo docker run --restart=always                            \
        -v /etc/pwxlh:/config -v /etc/pwxlh/certs:/certs     \
        portworx/px-lighthouse:1.4.0
 
-export IP=$(hostname -I | awk '{print $1}')
+#export IP=$(hostname -I | awk '{print $1}')
 
-docker run -d --net=host -p 4001:2379 \
- --volume=/var/lib/px-etcd:/etcd-data \
- --name etcd quay.io/coreos/etcd /usr/local/bin/etcd \
- --data-dir=/etcd-data --name node1 \
- --advertise-client-urls http://${IP}:4001 \
- --listen-client-urls http://${IP}:4001 \
- --initial-advertise-peer-urls http://${IP}:2381 \
- --listen-peer-urls http://${IP}:2381 \
- --initial-cluster node1=http://${IP}:2381
+#docker run -d --net=host -p 4001:2379 \
+# --volume=/var/lib/px-etcd:/etcd-data \
+# --name etcd quay.io/coreos/etcd /usr/local/bin/etcd \
+# --data-dir=/etcd-data --name node1 \
+# --advertise-client-urls http://${IP}:4001 \
+# --listen-client-urls http://${IP}:4001 \
+# --initial-advertise-peer-urls http://${IP}:2381 \
+# --listen-peer-urls http://${IP}:2381 \
+# --initial-cluster node1=http://${IP}:2381
 
 mkdir wordpress && mkdir postgres
 mv *wordpress*.* wordpress
