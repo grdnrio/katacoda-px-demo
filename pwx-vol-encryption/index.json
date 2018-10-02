@@ -23,7 +23,8 @@
           "file": "*",
           "target": "~/"
         }
-      ],
+      ]
+    },
     "intro": {
       "text": "intro.md"
     },
