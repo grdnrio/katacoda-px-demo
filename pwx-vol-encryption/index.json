@@ -1,6 +1,7 @@
 {
   "title": "Encrypting volumes on Kubernetes",
   "description": "Create encrypted Portworx volumes either with a StorageClass or PVCs, backed by Kubernetes Secrets",
+  "difficulty": "Intermediate",
   "details": {
     "steps": [
       {
