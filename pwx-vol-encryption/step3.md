@@ -1,0 +1,29 @@
+Now we hav e a cluster secret set we can use it to secure a StorageClass.
+
+### Step: Create a secure StorageClass
+Let's create a new StorageClass. First take a look at the StorageClass yaml.
+```
+cat px-secure-sc.yaml
+```{{execute T1}}
+
+You'll see we're using the `secure: "true"` parameter. This will ensure that this StorageClass will look for the default secret name `px-vol-encryption` and use this key to encrypt volumes from PVCs that use this StorageClass. 
+
+Now apply the spec to create the StorageClass.
+
+```
+kubectl apply -f px-secure-sc.yaml
+```{{execute T1}}
+
+### Step: Create a PVC
+We can now create a PVC that uses our secure StorageClass. Take a look at the PVC spec.
+```
+cat px-secure-pvc.yaml
+```{{execute T1}}
+
+You'll notice that we're referencing our previously created secure StorageClass `storageClassName: px-secure-sc`. This ensures any volumes created will be encrypted.
+
+Apply the PVC spec.
+
+```
+kubectl apply -f px-secure-pvc.yaml
+```{{execute T1}}
