@@ -5,6 +5,6 @@ It is worth noting that you can use a wide range of secret stores such as Hashic
 First let's validate that we are using Kubernetes secrets.
 ```
 ssh -o StrictHostKeyChecking=no -l node01 cat /etx/pwx/config.json
-```{execute T1}}
+```{{execute T1}}
 
 You can see the `secret_type` is set to k8s. Note: you can set the secrets endpoint you wish to use when installing Portworx.
