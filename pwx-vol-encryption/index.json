@@ -17,6 +17,13 @@
         "text": "step3.md"
       }
     ],
+    "assets": {
+      "client": [
+        {
+          "file": "*",
+          "target": "~/"
+        }
+      ],
     "intro": {
       "text": "intro.md"
     },
