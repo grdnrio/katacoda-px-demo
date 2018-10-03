@@ -18,12 +18,10 @@
       }
     ],
     "assets": {
-      "client": [
-        {
-          "file": "*",
-          "target": "~/"
-        }
-      ]
+      "host01": [ {"file": "*", "target": "/root", "chmod": "+x" } ],
+      "node01": [ {"file": "*", "target": "/root", "chmod": "+x" } ],
+      "node02": [ {"file": "*", "target": "/root", "chmod": "+x" } ],
+      "node03": [ {"file": "*", "target": "/root", "chmod": "+x" } ]
     },
     "intro": {
       "text": "intro.md"
