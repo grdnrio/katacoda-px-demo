@@ -1,0 +1,35 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: db2
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: db2
+    spec:
+      schedulerName: stork
+      containers:
+      - name: db2
+        image: ibmcom/db2express-c:latest
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - containerPort: 50000
+        env:
+        - name: DB2INST1_PASSWORD
+          value: ilovedatabases
+        - name: LICENSE
+          value: accept
+        volumeMounts:
+        - mountPath: /home/db2inst1
+          name: db2data
+      volumes:
+      - name: db2data
+        persistentVolumeClaim:
+          claimName: px-db2-pvc
