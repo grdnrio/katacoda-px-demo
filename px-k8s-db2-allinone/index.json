@@ -1,6 +1,7 @@
 {
   "title": "IBM DB2 on Kubernetes with Portworx",
   "description": "Run DB2 on Kubernetes with Portworx providing HA and snapshots",
+  "difficulty": "Beginner",
   "details": {
     "steps": [
       {
@@ -16,6 +17,12 @@
         "text": "step3.md"
       }
     ],
+    "assets": {
+      "host01": [ {"file": "*", "target": "/root", "chmod": "+x" } ],
+      "node01": [ {"file": "*", "target": "/root", "chmod": "+x" } ],
+      "node02": [ {"file": "*", "target": "/root", "chmod": "+x" } ],
+      "node03": [ {"file": "*", "target": "/root", "chmod": "+x" } ]
+    },
     "intro": {
       "text": "intro.md"
     },
