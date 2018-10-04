@@ -4,7 +4,7 @@ In this step, we will create a Portworx volume (PVC) for DB2.
 
 Take a look at the StorageClass definition for Portworx
 ```
-cat px-repl3-db2-sc.yaml
+echo "$(cat px-repl3-db2-sc.yaml)"
 ```{{execute T1}}
 
 The parameters are declarative policies for your storage volume. See [here](https://docs.portworx.com/manage/volumes.html) for a full list of supported parameters.
@@ -18,7 +18,7 @@ kubectl create -f px-repl3-db2-sc.yaml
 
 Take a look at the Persistent Volume Claim
 ```
-cat px-db2-pvc.yaml
+echo "$(cat px-db2-pvc.yaml)"
 ```{{execute T1}}
 
 This defines the maximum volume size. Portworx will thin provision the volume and let it grow to 5GB size.
