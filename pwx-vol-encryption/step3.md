@@ -1,4 +1,4 @@
-Now we hav e a cluster secret set we can use it to secure a StorageClass.
+Now we have a cluster secret set we can use it to secure a StorageClass.
 
 ### Step: Create a secure StorageClass
 Let's create a new StorageClass. First take a look at the StorageClass yaml.
