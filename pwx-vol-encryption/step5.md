@@ -1,26 +1,33 @@
-We've inserted data into Postgres, so now let's see if we can view the data on the Portworx volume.
+Now we can create our PVC.
 
-### Step: Attach and mount the Portworx volume
-We're going to mount the Portworx volume on the host so we can access the data. First scale down the deployment to detach the volume from the pod.
-
-```
-kubectl scale deployment/postgres --replicas=0
-```{{execute T1}}
-
-Now attach the container volume to the host.
+### Step: Creating a secure PVC
+Take a look at the PVC spec.
 
 ```
-PX_VOL=$(kubectl get pvc -o jsonpath='{.items[0].spec.volumeName}')
-ssh -o "StrictHostKeyChecking no" node01 pxctl host attach $PX_VOL
+echo "$(cat px-secure-pvc2.yaml)"
 ```{{execute T1}}
 
-Create the volume mount point.
+You'll notice a set of new parameters.
 
 ```
-ssh -o "StrictHostKeyChecking no" node01 mkdir /var/lib/osd/pwx-data
+    px/secret-name: volume-secrets
+    px/secret-namespace: portworx
+    px/secret-key: mysql-pvc
+```
+
+Here we are specifying the secret name, the namespace the secret lives in (useful for multiple cluster tenants), and the secret key. These are the values we used in the previous step to create the secret.
+
+You can apply the spec now to provision an encrypted volume.
+
+```
+kubectl apply -f px-secure-pvc2.yaml
 ```{{execute T1}}
 
-Then mount the volume.
+If you take a look at the Portworx volume list you'll the new encrypted PVC.
+
 ```
-ssh -o "StrictHostKeyChecking no" node01 pxctl host mount $PX_VOL /var/lib/osd/pwx-data
+PX_POD=$(kubectl get pods -l name=portworx -n kube-system -o jsonpath='{.items[0].metadata.name}')
+kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl volume list
 ```{{execute T1}}
+
+By using the above method we can create separation of keys and responsibilities as part of an encrypted volume workflow with Portworx.

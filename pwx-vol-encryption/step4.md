@@ -1,52 +1,34 @@
-### Step: Deploy Postgres
-We're going to use Postgres to write some data and validate it is encrypted.
+We've proven out cluster wide encryption applied to volumes via a StorageClass, but what if you have multiple teams, tenants or lines of business? 
 
-First apply the postgres spec to bring the pod up. This deployment spec uses the PVC we created in the last step.
+Encryption at Storage Class level does not allow using different secret keys for different PVCs. It also does not provide a way to disable encryption for certain PVCs that are using the same secure storage class. Encryption at PVC level will override the encryption options from Storage Class.
+
+Let's take a look at per volume encryption.
+
+### Step: Create a 'normal' StorageClass
+We're going to start by creating a StorageClass that does not use encryption.
+
+Take a look at this SC.
 
 ```
-kubectl apply -f px-secure-postgres.yaml
+echo "$(cat px-sc.yaml)"
 ```{{execute T1}}
 
-Wait for the pod to come up.
+You'll notice there is no secure parameter. Apply the spec now.
 
 ```
-watch kubectl get pods -o wide
+kubectl apply -f px-sc.yaml
 ```{{execute T1}}
 
-When the pod is running clear the watch.
+### Step: Create a new secret to be used with our PVC
+In the previous section we used a cluster wide secret with the default secret name. Now we're going to create a custom secret.
 
 ```
-clear
+kubectl -n portworx create secret generic volume-secrets \
+  --from-literal=secure-pvc=SuperSecur3Key
 ```{{execute T1}}
 
-### Step: Write some data
-Now that Postgres is deployed we're going to write some sample data.
-
-Below commands exec into the postgres pod:
+Verify the secret exists.
 
 ```
-POD=`kubectl get pods -l app=postgres | grep Running | grep 1/1 | awk '{print $1}'`
-kubectl exec -it $POD bash
-```{{execute T1}}
-
-Next we can launch the psql utility and create a database
-```
-psql
-create database pxdemo;
-\l
-\q
-```{{execute T1}}
-
-Then we're going to use pgbench to insert some sample data.
-```
-pgbench -i -s 50 pxdemo;
-```{{execute T1}}
-
-Take a look at the tables and exit out of the container.
-```
-psql pxdemo
-\dt
-select count(*) from pgbench_accounts;
-\q
-exit
+kubectl get secrets -n portworx
 ```{{execute T1}}
