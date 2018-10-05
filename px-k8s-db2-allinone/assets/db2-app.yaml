@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db2
+  labels:
+    app: db2
+spec:
+  containers:
+  - name: db2express-c
+    command: ["/entrypoint.sh","db2start"]
+    image: ibmcom/db2express-c
+    ports:
+    - containerPort: 50000
+    env:
+    - name: DB2INST1_PASSWORD
+      value: somepasswd!
+    - name: LICENSE
+      value: accept
+    volumeMounts:
+        - mountPath: /home/db2inst1
+          name: db2data
+  volumes:
+    - name: db2data
+    persistentVolumeClaim:
+    claimName: px-db2-pvc
