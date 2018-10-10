@@ -1,8 +1,8 @@
-In this step, we will create a Portworx volume (PVC) for DB2.
+In order to use Portworx volumes we need to interact with the existing Kubernetes storage primitives. In this step, we will create a Portworx volume (PVC) for DB2.
 
 ### Step: Create StorageClass and PersistentVolumeClaim
 
-Take a look at the StorageClass definition for Portworx
+We'll start with a StorageClass. Take a look at the StorageClass definition for Portworx
 ```
 echo "$(cat px-repl3-db2-sc.yaml)"
 ```{{execute T1}}
