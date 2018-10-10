@@ -29,5 +29,3 @@ If you take a look at the Portworx volume list you'll the new encrypted PVC.
 PX_POD=$(kubectl get pods -l name=portworx -n kube-system -o jsonpath='{.items[0].metadata.name}')
 kubectl exec $PX_POD -n kube-system -- /opt/pwx/bin/pxctl volume list
 ```{{execute T1}}
-
-By using the above method we can create separation of keys and responsibilities as part of an encrypted volume workflow with Portworx.
