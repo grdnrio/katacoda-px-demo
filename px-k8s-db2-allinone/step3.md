@@ -2,8 +2,12 @@ In this step, we will deploy the DB2 application using the `PersistentVolumeClai
 
 We're going to use the community version of DB2, but the following steps are equally relevant for the enterprise versions.
 
+### Step: Deploy DB2
+
 Take a look at the DB deployment yaml:
-```cat db2-app.yaml```{{execute T1}}
+```
+echo "$(cat db2-app.yaml)"
+```{{execute T1}}
 
 Observe the `volumeMounts` and `volumes` sections where we mount the PVC.
 

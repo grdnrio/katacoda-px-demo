@@ -28,8 +28,10 @@ spec:
         - name: LICENSE
           value: accept
         volumeMounts:
-        - mountPath: /tmp/db2inst
+        - mountPath: /home/db2inst1/db2-data/
           name: db2data
+      securityContext:
+        fsGroup: 1001
       volumes:
       - name: db2data
         persistentVolumeClaim:
