@@ -1,6 +1,6 @@
 We have an encrypted PVC, which is great, but let's validate that we cannot access this encrypted volume directly.
 
-### Step: Accessing a secure PVC
+### Step: Validating a secure PVC
 We're going to see if we can access the secure PVC directly from the host. We'll mount the Portworx volume directly on the host so we can see if it's possible access the data.
 
 Start by setting the PVC name in an environment variable.
