@@ -5,12 +5,12 @@ IBM have produced a sample application that we can use to insert and retrieve me
 
 ```
 kubectl create -f mq-sample-app.yaml
-```{{execute HOST2}}
+```{{execute T1}}
 
 Below commands wait until the IBM MQ sample app pod is in ready state.
 ```
 watch kubectl get pods -o wide
-```{{execute HOST2}}
+```{{execute T1}}
 
 When the pod is in Running state then then hit ```clear```{{execute interrupt}} to ctrl-c and clear the screen.
 
@@ -18,10 +18,9 @@ Now that the app is running we can establish a shell in the container to run the
 
 ```
 POD=`kubectl get pods -l app=mq-app | grep Running | grep 1/1 | awk '{print $1}'`
-kubectl exec -it $POD bash"
-```{{execute HOST2}}
+kubectl exec -it $POD -- mq-demo
+```{{execute T1}}
 
-When the command completes, let's check we have some data in our sample database.
 
 ```
 kubectl exec $POD -- su - db2inst1 -c "db2 connect to pxdemo && db2 LIST TABLES"
