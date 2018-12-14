@@ -2,7 +2,7 @@ In order to use Portworx volumes we need to interact with the existing Kubernete
 
 ### Step: Create StorageClass and PersistentVolumeClaim
 
-We'll start with a StorageClass. Take a look at the StorageClass definition for Portworx
+We'll start with a StorageClass. Take a look at the StorageClass definition for Portworx. You'll notice that we're setting a replication factor of 3. This will ensure that data is replicated to two other nodes in the cluster.
 ```
 echo "$(cat px-mq-sc.yaml)"
 ```{{execute T1}}

@@ -17,8 +17,7 @@ When the pod is in Running state then then hit ```clear```{{execute interrupt}} 
 Now that the app is running we can establish a shell in the container to run the sample application.
 
 ```
-POD=`kubectl get pods -l app=mq-app | grep Running | grep 1/1 | awk '{print $1}'`
-kubectl exec -it $POD -- mq-demo
+kubectl exec -it mq-app -- mq-demo
 ```{{execute T1}}
 
 
