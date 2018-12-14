@@ -16,22 +16,29 @@ spec:
     spec:
       schedulerName: stork
       containers:
-      - name: db2express-c
-        command: ["/entrypoint.sh","db2start"]
-        image: ibmcom/db2express-c:10.5.0.5-3.10.0
+      - name: db2
+        image: store/ibmcorp/db2_developer_c:11.1.3.3b-x86_64
         imagePullPolicy: "IfNotPresent"
         ports:
         - containerPort: 50000
         env:
         - name: DB2INST1_PASSWORD
-          value: somepasswd!
+          value: "somepasswd!"
         - name: LICENSE
-          value: accept
+          value: "accept"
+        - name: TO_CREATE_SAMPLEDB
+          value: "true"
+        - name: DB2INSTANCE
+          value: "db2inst1"
         volumeMounts:
-        - mountPath: /home/db2inst1/db2-data/
+        - mountPath: /database
           name: db2data
+        securityContext:
+          privileged: true
       securityContext:
-        fsGroup: 1001
+        fsGroup: 1000
+      imagePullSecrets:
+      - name: regcred
       volumes:
       - name: db2data
         persistentVolumeClaim:

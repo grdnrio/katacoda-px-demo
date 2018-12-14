@@ -7,3 +7,4 @@ parameters:
    repl: "3"
    block_size: "512b"
    io_profile: "db"
+allowVolumeExpansion: true
