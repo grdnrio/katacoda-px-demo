@@ -2,7 +2,7 @@ In this step, we will deploy the IBM MQ application using the `PersistentVolumeC
 
 We're going to use the community version of IBM MQ, but the following steps are equally relevant for the enterprise versions.
 
-### Step: Deploy DB2
+### Step: Deploy IBM MQ
 
 Take a look at the IBM MQ deployment yaml:
 ```
